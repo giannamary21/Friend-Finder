@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Friend Finder Survey</title>
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+    <body>
+       <div class="container">
+         <div class="jumbotron">
+            <h1 class="text-center"><span class="glyphicon glyphicon-user"></span>Take The Survey!</h1>
+      </div>
+
+      <div class="row">
+      <div class="col-lg-12">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">Survey</h4>
+       </div>
+          <div class="panel-body">
+
+            <form role="form">
+
+              <div class="form-group">
+              <h2><label for="reserve-name">About You</label></h2>
+                <label for="reserve-name">Name</label>
+                <input type="text" class="form-control" id="name">
+              </div>
+
+              
+
+              <hr>
+
+             <div class="form-group">
+             <h2> Question 1 </h2>
+             <h4>You are always on the go?</h4>  
+              <div class="col-xs-3">
+             <select class="form-control" id="q1">
+             <option value="">Select an option</option>
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+            </select>
+            </div>
+             </div>
+            
+            </br>
+
+             <div class="form-group">
+             <h2>Question 2</h2>
+             <h4>You are a speed typer?</h4>              
+              <div class="col-xs-3">
+             <select class="form-control" id="q2">
+             <option value="">Select an option</option>
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+            </select>
+            </div>
+             </div>
+
+            </br>
+
+             <div class="form-group">
+             <h2>Question 3</h2>
+             <h4>You like to be with friends 24/7?</h4>              
+              <div class="col-xs-3">
+             <select class="form-control" id="q3">
+             <option value="">Select an option</option>
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+            </select>
+            </div>
+             </div>
+
+             </br>
+
+             <div class="form-group">
+             <h2>Question 4</h2>
+             <h4>Youre a giver not a taker?</h4>           
+              <div class="col-xs-3">
+             <select class="form-control" id="q4">
+             <option value="">Select an option</option>
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+            </select>
+            </div>
+             </div>
+
+             </br>
+
+             <div class="form-group">
+             <h2>Question 5</h2>
+             <h4>You are a positive person?</h4>
+              <div class="col-xs-3">
+             <select class="form-control" id="q5">
+             <option value="">Select an option</option>
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+            </select>
+            </div>
+             </div>
+
+             </br>
+             </br>
+             </br>
+              <button type="submit" class="btn btn-primary submit" id="submit">Submit</button>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <p><a href="/api/friends">Friends</a> | <a href="https://github.com/giannamary21/Friend-Finder">Friend Finder Repo</a></p>
+      </div>
+    </footer>
+
+  </div>
+
+<div id="bestFriendModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">X</button>
+        <h2 class="modal-title">Best Match</h2>
+      </div>
+      <div class="modal-body">
+        <h2 id="bestFriendName"></h2>
+        <img id="bestFriendImg" src="" width=500px alt="Best Friend">
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+    });
+
+    $('#submit').on('click', function(event) {
+      event.preventDefault();
+      
+      var userData = {
+        name: $('#name').val().trim(),
+        photo: $('#photo').val().trim(),
+        scores:[
+          $('#q1').val().trim(),
+          $('#q2').val().trim(),
+          $('#q3').val().trim(),
+          $('#q4').val().trim(),
+          $('#q5').val().trim(),
+        ]
+      };
+
+      console.log(userData);
+
+      var currentURL = window.location.origin;
+    $.post(currentURL + '/api/friends', userData, function(data) {
+      $("#bestFriendName").text(data.name);
+      $("#bestFriendImg").attr("src", data.photo);
+      $("#bestFriendModal").modal("show");
+    });
+    return false;
+          $("#name").val("");
+          $("#photo").val("");
+          $("#q1").val("");
+          $("#q2").val("");
+          $("#q3").val("");
+          $("#q4").val("");
+          $("#q5").val("");
+    });
+    </script>
+</body>
+</html>
